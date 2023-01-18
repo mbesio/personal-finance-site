@@ -37,7 +37,7 @@ export default function Post({ post, morePosts, preview }: Props) {
   }
   return (
     // <Layout preview={preview}>
-      <Container>
+      <Container >
         <Header />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
@@ -52,11 +52,11 @@ export default function Post({ post, morePosts, preview }: Props) {
               </Head>
               <PostHeader
                 title={post.title}
-                coverImage={post.coverImage}
+                // coverImage={post.coverImage}
                 // date={post.date}
                 // author={post.author}
               />
-              <PostBody content={post.content} />
+              <PostBody content={post.content}/>
             </article>
           </>
         )}
