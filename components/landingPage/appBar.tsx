@@ -23,7 +23,7 @@ const ResponsiveAppBar = () => {
   }
 
   return (
-    <AppBar position="static">
+    <AppBar color="default" position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box
@@ -34,7 +34,10 @@ const ResponsiveAppBar = () => {
               },
             }}
           >
-            <IconButton onClick={handleIconClick} sx={{ color: '#3f51b5' }}>
+            <IconButton
+              onClick={handleIconClick}
+              sx={{ color: 'primary.dark' }}
+            >
               <SavingsIcon
                 sx={{
                   mr: 1,
@@ -60,7 +63,7 @@ const ResponsiveAppBar = () => {
               <Button
                 key={page}
                 onClick={() => handleNavBarClick(page)}
-                sx={{ mr: 1, my: 2, color: '#3f51b5', display: 'block' }}
+                sx={{ mr: 1, my: 2, color: 'primary.dark', display: 'block' }}
               >
                 {page}
               </Button>

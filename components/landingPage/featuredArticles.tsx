@@ -31,7 +31,7 @@ const FeaturedArtices = () => {
           flexGrow: 1,
           fontWeight: 500,
           textDecoration: 'none',
-          color: '#3f51b5',
+          color: 'primary.dark',
         }}
       >
         Articoli

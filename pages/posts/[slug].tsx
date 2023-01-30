@@ -1,15 +1,11 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import Container from '../../components/container'
-import PostBody from '../../components/post-body'
-import Header from '../../components/header'
-import PostHeader from '../../components/post-header'
-// import Layout from '../../components/layout'
 import { getPostBySlug, getAllPosts } from '../../lib/api'
-import PostTitle from '../../components/post-title'
-import Head from 'next/head'
 import { remark } from 'remark'
 import html from 'remark-html'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import AppBar from '../../components/landingPage/appBar'
 
 type PostType = {
   slug: string
@@ -35,30 +31,50 @@ export default function Post({ post, morePosts, preview }: Props) {
     return <ErrorPage statusCode={404} />
   }
   return (
-    // <Layout preview={preview}>
-    <Container>
-      <Header />
-      {router.isFallback ? (
-        <PostTitle>Loading…</PostTitle>
-      ) : (
-        <>
-          <article className="mb-32">
-            <Head>
-              <title>{post.title} | Next.js Blog Example</title>
-              <meta property="og:image" content={post.ogImage.url} />
-            </Head>
-            <PostHeader
-              title={post.title}
-              // coverImage={post.coverImage}
-              // date={post.date}
-              // author={post.author}
-            />
-            <PostBody content={post.content} />
-          </article>
-        </>
-      )}
-    </Container>
-    // </Layout>
+    <>
+      <AppBar />
+      <Box
+        m="auto"
+        sx={{
+          mt: 5,
+          px: 2,
+          maxWidth: {
+            sm: '100%',
+            md: '60%',
+          },
+        }}
+      >
+        <Typography variant="h3" color="primary.dark">
+          {post.title}
+        </Typography>
+        {/* Could create an image component and import this */}
+        <Box
+          sx={{
+            mt: 1,
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${post.coverImage})`,
+            height: '300px',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            position: 'relative',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
+            color: 'white',
+            fontFamily: { xs: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'] },
+          }}
+        ></Box>
+        <Box
+          sx={{
+            fontFamily: { xs: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'] },
+            lineHeight: '1.3em',
+          }}
+          color="#1976d2"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
+      </Box>
+    </>
   )
 }
 

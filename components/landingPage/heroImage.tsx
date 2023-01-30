@@ -15,7 +15,7 @@ const HeroImage = () => {
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        color: '#fff',
+        color: 'white',
         fontFamily: { xs: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'] },
       }}
     >

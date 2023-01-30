@@ -8,7 +8,6 @@ import html from 'remark-html'
 import { getPostBySlug } from '../lib/api'
 
 const LandingPage = (props) => {
-  console.log('props in the landing page ', props)
   return (
     <Box>
       <AppBar />

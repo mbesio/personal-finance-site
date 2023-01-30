@@ -19,10 +19,15 @@ const ArticleCard = ({ image, imageTitle, title, summary, slug }) => {
           title={imageTitle}
         ></CardMedia>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2" color="#3f51b5">
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="h2"
+            color="primary.dark"
+          >
             {title}
           </Typography>
-          <Typography variant="body2" color="#7986cb" component="p">
+          <Typography variant="body2" color="primary" component="p">
             {summary}
           </Typography>
         </CardContent>
