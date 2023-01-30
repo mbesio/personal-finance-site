@@ -16,6 +16,7 @@ const articleDummy = {
   slug: 'tbd',
 }
 
+// should get as props an array of blog posts to render
 const FeaturedArtices = () => {
   return (
     <Container

@@ -5,7 +5,7 @@ import { remark } from 'remark'
 import html from 'remark-html'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import AppBar from '../../components/landingPage/appBar'
+import AppBar from '../../components/appBar'
 
 type PostType = {
   slug: string
@@ -64,7 +64,7 @@ export default function Post({ post, morePosts, preview }: Props) {
             color: 'white',
             fontFamily: { xs: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'] },
           }}
-        ></Box>
+        />
         <Box
           sx={{
             fontFamily: { xs: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'] },

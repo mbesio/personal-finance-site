@@ -1,6 +1,6 @@
 import React from 'react'
 import Box from '@mui/material/Box'
-import AppBar from '../components/landingPage/appBar'
+import AppBar from '../components/appBar'
 import HeroImage from '../components/landingPage/heroImage'
 import FeaturedArtices from '../components/landingPage/featuredArticles'
 import { remark } from 'remark'
