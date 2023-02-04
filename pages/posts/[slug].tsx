@@ -26,6 +26,7 @@ type Props = {
 }
 
 export default function Post({ post, morePosts, preview }: Props) {
+  console.log('post in the Post Component ', post)
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -90,6 +91,7 @@ export async function markdownToHtml(markdown: string) {
 }
 
 export async function getStaticProps({ params }: Params) {
+  console.log('params in the getStaticProps function ', params)
   const post = getPostBySlug(params.slug, [
     'title',
     'date',
@@ -98,6 +100,7 @@ export async function getStaticProps({ params }: Params) {
     'content',
     'ogImage',
     'coverImage',
+    'excerpt',
   ])
   const content = await markdownToHtml(post.content || '')
 
@@ -111,6 +114,7 @@ export async function getStaticProps({ params }: Params) {
   }
 }
 
+// Probably don't need this? To be confirmed
 export async function getStaticPaths() {
   const posts = getAllPosts(['slug'])
 
