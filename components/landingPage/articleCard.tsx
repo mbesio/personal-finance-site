@@ -9,7 +9,12 @@ import Link from 'next/link'
 const ArticleCard = ({ image, imageTitle, title, summary, slug }) => {
   return (
     <Card sx={{ maxWidth: '100%' }}>
-      <Link href={slug}>
+      <Link
+        href={slug}
+        style={{
+          textDecoration: 'none',
+        }}
+      >
         <CardActionArea>
           <CardMedia
             sx={{ height: 240 }}

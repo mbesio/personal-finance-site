@@ -3,7 +3,7 @@ import Box from '@mui/material/Box'
 import AppBar from '../components/appBar'
 import HeroImage from '../components/landingPage/heroImage'
 import FeaturedArtices from '../components/landingPage/featuredArticles'
-import { getPostBySlug } from '../lib/api'
+import { getAllPosts, getPostBySlug } from '../lib/api'
 
 const LandingPage = (props) => {
   return (
@@ -21,6 +21,8 @@ const featuredArticles = ['helloworld', 'helloworld2']
 
 export async function getStaticProps() {
   //have up to six articles here
+  const postsTest = getAllPosts(['slug'])
+  console.log('postsTest to see if this works', postsTest)
   const posts = featuredArticles.map((post) =>
     getPostBySlug(post, ['title', 'slug', 'coverImage', 'excerpt'])
   )
