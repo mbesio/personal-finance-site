@@ -17,12 +17,11 @@ const LandingPage = (props) => {
 
 export default LandingPage
 
+//have up to six articles here
 const featuredArticles = ['helloworld', 'helloworld2']
 
 export async function getStaticProps() {
-  //have up to six articles here
   const postsTest = getAllPosts(['slug'])
-  console.log('postsTest to see if this works', postsTest)
   const posts = featuredArticles.map((post) =>
     getPostBySlug(post, ['title', 'slug', 'coverImage', 'excerpt'])
   )

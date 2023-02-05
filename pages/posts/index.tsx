@@ -9,7 +9,6 @@ const AllPosts = (props) => {
     <Box>
       <AppBar />
       <FeaturedArtices posts={props.posts} />
-      <div>Maybe add some kicker here</div>
     </Box>
   )
 }

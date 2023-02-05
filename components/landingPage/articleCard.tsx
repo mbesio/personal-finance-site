@@ -8,7 +8,7 @@ import Link from 'next/link'
 
 const ArticleCard = ({ image, imageTitle, title, summary, slug }) => {
   return (
-    <Card sx={{ maxWidth: '100%' }}>
+    <Card sx={{ maxWidth: '100%', height: '100%' }}>
       <Link
         href={slug}
         style={{
@@ -30,7 +30,18 @@ const ArticleCard = ({ image, imageTitle, title, summary, slug }) => {
             >
               {title}
             </Typography>
-            <Typography variant="body2" color="primary" component="p">
+            <Typography
+              variant="body2"
+              color="primary"
+              component="p"
+              sx={{
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: '-webkit-box',
+                WebkitLineClamp: '3',
+                WebkitBoxOrient: 'vertical',
+              }}
+            >
               {summary}
             </Typography>
           </CardContent>

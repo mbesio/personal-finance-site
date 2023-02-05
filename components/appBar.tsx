@@ -5,23 +5,12 @@ import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
-import Button from '@mui/material/Button'
 import SavingsIcon from '@mui/icons-material/Savings'
+import Link from 'next/link'
 
 const pages = ['Articoli', 'Strumenti']
 
 const ResponsiveAppBar = () => {
-  const handleNavBarClick = (page) => {
-    // Will have to redirect to the Articoli or Strumenti page
-    console.log(`${page} has been clicked`)
-  }
-
-  const handleIconClick = () => {
-    console.log(
-      'the Icon was clicked so the user should be sent back to the home page'
-    )
-  }
-
   return (
     <AppBar color="default" position="static">
       <Container maxWidth="xl">
@@ -34,39 +23,50 @@ const ResponsiveAppBar = () => {
               },
             }}
           >
-            <IconButton
-              onClick={handleIconClick}
-              sx={{ color: 'primary.dark' }}
+            <Link
+              href="/"
+              style={{
+                textDecoration: 'none',
+              }}
             >
-              <SavingsIcon
-                sx={{
-                  mr: 1,
-                }}
-              />
-              <Typography
-                variant="h4"
-                noWrap
-                component="a"
-                sx={{
-                  mr: 2,
-                  flexGrow: 1,
-                  fontWeight: 500,
-                  textDecoration: 'none',
-                }}
-              >
-                FINANZA PERSONALE
-              </Typography>
-            </IconButton>
+              <IconButton sx={{ color: 'primary.dark' }}>
+                <SavingsIcon
+                  sx={{
+                    mr: 1,
+                  }}
+                />
+                <Typography
+                  variant="h4"
+                  noWrap
+                  component="a"
+                  sx={{
+                    mr: 2,
+                    flexGrow: 1,
+                    fontWeight: 500,
+                    textDecoration: 'none',
+                  }}
+                >
+                  FINANZA PERSONALE
+                </Typography>
+              </IconButton>
+            </Link>
           </Box>
           <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={() => handleNavBarClick(page)}
-                sx={{ mr: 1, my: 2, color: 'primary.dark', display: 'block' }}
+              <Link
+                href="/posts"
+                style={{
+                  textDecoration: 'none',
+                }}
               >
-                {page}
-              </Button>
+                <Typography
+                  key={page}
+                  variant="button"
+                  sx={{ mr: 1, my: 2, color: 'primary.dark', display: 'block' }}
+                >
+                  {page}
+                </Typography>
+              </Link>
             ))}
           </Box>
         </Toolbar>
