@@ -46,7 +46,7 @@ const ResponsiveAppBar = () => {
                     textDecoration: 'none',
                   }}
                 >
-                  FINANZA PERSONALE
+                  FINANZA PERSONALES
                 </Typography>
               </IconButton>
             </Link>
