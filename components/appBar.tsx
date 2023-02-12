@@ -38,7 +38,6 @@ const ResponsiveAppBar = () => {
                 <Typography
                   variant="h4"
                   noWrap
-                  component="a"
                   sx={{
                     mr: 2,
                     flexGrow: 1,
@@ -54,13 +53,13 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
             {pages.map((page) => (
               <Link
+                key={page}
                 href="/posts"
                 style={{
                   textDecoration: 'none',
                 }}
               >
                 <Typography
-                  key={page}
                   variant="button"
                   sx={{ mr: 1, my: 2, color: 'primary.dark', display: 'block' }}
                 >

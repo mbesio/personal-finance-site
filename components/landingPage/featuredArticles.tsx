@@ -7,7 +7,6 @@ import ArticleCard from './articleCard'
 
 // should get as props an array of blog posts to render
 const FeaturedArtices = ({ posts }) => {
-  console.log('posts in FeaturedArtices ', posts)
   return (
     <Container
       maxWidth="lg"
@@ -29,7 +28,7 @@ const FeaturedArtices = ({ posts }) => {
       </Typography>
       <Grid container spacing={3}>
         {posts.map((post) => (
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={4} key={post.slug}>
             <ArticleCard
               image={post.coverImage}
               imageTitle={`image for ${post.title}`}
