@@ -1,7 +1,6 @@
 import React from 'react'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
-import theme from '../../theme'
 import Grid from '@mui/material/Grid'
 import ArticleCard from './articleCard'
 
@@ -11,7 +10,7 @@ const FeaturedArtices = ({ posts }) => {
     <Container
       maxWidth="lg"
       sx={{
-        paddingTop: theme.spacing(3),
+        pt: 3,
       }}
     >
       <Typography

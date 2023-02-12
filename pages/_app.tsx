@@ -1,11 +1,12 @@
-import React from 'react'
-import { ThemeProvider } from '@mui/material/styles'
-import theme from '../theme'
+import Head from 'next/head'
 
 export default function App({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={theme}>
+    <>
+      <Head>
+        <link rel="shortcut icon" href="/assets/favicon/favicon.png" />
+      </Head>
       <Component {...pageProps} />
-    </ThemeProvider>
+    </>
   )
 }
