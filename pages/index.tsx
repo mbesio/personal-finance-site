@@ -18,7 +18,11 @@ const LandingPage = (props) => {
 export default LandingPage
 
 //have up to six articles here
-const featuredArticles = ['helloworld', 'helloworld2']
+const featuredArticles = [
+  'l-indipendenza-finanziaria',
+  'dollar-cost-averaging',
+  'il-primo-step-verso-l-indipendenza-finanziaria',
+]
 
 export async function getStaticProps() {
   const postsTest = getAllPosts(['slug'])
