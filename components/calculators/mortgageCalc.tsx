@@ -8,20 +8,15 @@ import Box from '@mui/material/Box'
 import InputLabel from '@mui/material/InputLabel'
 import Button from '@mui/material/Button'
 
-const MortgageCalculator = () => {
-  const [amount, setAmount] = useState(200000)
-  const [rate, setRate] = useState(2.5)
-  const [years, setYears] = useState(30)
-
-  const handleChangeAmount = (e) => setAmount(e.target.value)
-  const handleChangeRate = (e) => setRate(e.target.value)
-  const handleChangeYears = (e) => setYears(e.target.value)
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('the button was clicked')
-  }
-
+const MortgageCalculator = ({
+  amount,
+  rate,
+  years,
+  handleChangeAmount,
+  handleChangeRate,
+  handleChangeYears,
+  handleSubmit,
+}) => {
   return (
     <Box>
       <Typography

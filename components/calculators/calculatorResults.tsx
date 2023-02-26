@@ -5,7 +5,7 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 import PercentIcon from '@mui/icons-material/Percent'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 
-const MortgageResults = () => {
+const MortgageResults = ({ outputAmount, outputRate, outputYears }) => {
   return (
     <Box>
       <Typography
@@ -43,7 +43,7 @@ const MortgageResults = () => {
                   mr: 3,
                 }}
               >
-                {/* Qui ci verra' passato il valore calcolato */}€ 200,000
+                {outputAmount ? `€ ${outputAmount}` : ''}
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -56,7 +56,7 @@ const MortgageResults = () => {
                   mr: 3,
                 }}
               >
-                {/* Qui ci verra' passato il valore calcolato */} 2.5%
+                {outputRate ? `${outputRate} %` : ''}
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -69,7 +69,7 @@ const MortgageResults = () => {
                   mr: 3,
                 }}
               >
-                {/* Qui ci verra' passato il valore calcolato */} 30 anni
+                {outputYears ? `${outputYears} anni` : ''}
               </Typography>
             </Box>
           </Box>
