@@ -8,7 +8,10 @@ import Container from '@mui/material/Container'
 import SavingsIcon from '@mui/icons-material/Savings'
 import Link from 'next/link'
 
-const pages = ['Articoli', 'Strumenti']
+const pages = [
+  { name: 'Articoli', path: '/posts' },
+  { name: 'Strumenti', path: '/calculators' },
+]
 
 const ResponsiveAppBar = () => {
   return (
@@ -51,10 +54,10 @@ const ResponsiveAppBar = () => {
             </Link>
           </Box>
           <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
-            {pages.map((page) => (
+            {pages.map(({ name, path }) => (
               <Link
-                key={page}
-                href="/posts"
+                key={name}
+                href={path}
                 style={{
                   textDecoration: 'none',
                 }}
@@ -63,7 +66,7 @@ const ResponsiveAppBar = () => {
                   variant="button"
                   sx={{ mr: 1, my: 2, color: 'primary.dark', display: 'block' }}
                 >
-                  {page}
+                  {name}
                 </Typography>
               </Link>
             ))}
