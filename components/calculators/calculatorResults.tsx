@@ -121,7 +121,7 @@ const MortgageResults = ({
                   mr: 3,
                 }}
               >
-                {outputInstallment ? 'Rata mensile' : ''}
+                Rata mensile
               </Typography>
               <Typography
                 fontSize="1.5em"
@@ -131,11 +131,12 @@ const MortgageResults = ({
                   mr: 3,
                 }}
               >
+                €{' '}
                 {outputInstallment
-                  ? `€ ${new Intl.NumberFormat('de-DE').format(
+                  ? `${new Intl.NumberFormat('de-DE').format(
                       outputInstallment
                     )}`
-                  : ''}
+                  : '0'}
               </Typography>
             </Box>
             <Box
@@ -152,7 +153,7 @@ const MortgageResults = ({
                   mr: 3,
                 }}
               >
-                {outputInstallment ? 'Totale pagamento capitale' : ''}
+                Totale pagamento mutuo
               </Typography>
               <Typography
                 fontSize="1.5em"
@@ -162,11 +163,10 @@ const MortgageResults = ({
                   mr: 3,
                 }}
               >
+                €{' '}
                 {outputTotalCost
-                  ? `€ ${new Intl.NumberFormat('de-DE').format(
-                      outputTotalCost
-                    )}`
-                  : ''}
+                  ? `${new Intl.NumberFormat('de-DE').format(outputTotalCost)}`
+                  : '0'}
               </Typography>
             </Box>
             <Box
@@ -183,7 +183,7 @@ const MortgageResults = ({
                   mr: 3,
                 }}
               >
-                {outputInstallment ? 'Totale pagamento interessi' : ''}
+                Totale pagamento interessi
               </Typography>
               <Typography
                 fontSize="1.5em"
@@ -193,11 +193,12 @@ const MortgageResults = ({
                   mr: 3,
                 }}
               >
+                €{' '}
                 {outputTotalInterest
-                  ? `€ ${new Intl.NumberFormat('de-DE').format(
+                  ? `${new Intl.NumberFormat('de-DE').format(
                       outputTotalInterest
                     )}`
-                  : ''}
+                  : '0'}
               </Typography>
             </Box>
           </Box>
