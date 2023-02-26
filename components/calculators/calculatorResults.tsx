@@ -24,7 +24,13 @@ const MortgageResults = ({
       >
         Riepilogo
       </Typography>
-      <Box sx={{ display: 'flex', align: 'center' }}>
+      <Box
+        sx={{
+          display: 'flex',
+
+          justifyContent: 'space-around',
+        }}
+      >
         <Box>
           <Typography
             variant="h4"
