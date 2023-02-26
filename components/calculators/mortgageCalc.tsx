@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import FormControl from '@mui/material/FormControl'
-import FormGroup from '@mui/material/FormGroup'
+import FormHelperText from '@mui/material/FormHelperText'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
 import Typography from '@mui/material/Typography'
@@ -16,6 +16,9 @@ const MortgageCalculator = ({
   handleChangeRate,
   handleChangeYears,
   handleSubmit,
+  isAmountValid,
+  isRateValid,
+  isYearsValid,
 }) => {
   return (
     <Box>
@@ -39,6 +42,7 @@ const MortgageCalculator = ({
           <FormControl fullWidth sx={{ m: 1, width: '25ch' }}>
             <InputLabel htmlFor="amount">Amount</InputLabel>
             <OutlinedInput
+              error={!isAmountValid}
               id="amount"
               startAdornment={
                 <InputAdornment position="start">€</InputAdornment>
@@ -52,13 +56,23 @@ const MortgageCalculator = ({
               }}
               inputProps={{ step: '10000', lang: 'en-US' }}
             />
+            <FormHelperText
+              id="component-error-text"
+              sx={{
+                color: 'red',
+                visibility: !isAmountValid ? 'visible' : 'hidden',
+              }}
+            >
+              Max € 100,000,000
+            </FormHelperText>
           </FormControl>
           <FormControl fullWidth sx={{ m: 1, width: '25ch' }}>
             <InputLabel htmlFor="rate">Tasso d'interesse</InputLabel>
             <OutlinedInput
+              error={!isRateValid}
               id="rate"
               endAdornment={<InputAdornment position="end">%</InputAdornment>}
-              label="Rate"
+              label="Tasso d'interesse"
               type="number"
               value={rate}
               onChange={(e) => handleChangeRate(e)}
@@ -67,15 +81,26 @@ const MortgageCalculator = ({
               }}
               inputProps={{ step: '0.1' }}
             />
+
+            <FormHelperText
+              id="component-error-text"
+              sx={{
+                color: 'red',
+                visibility: !isRateValid ? 'visible' : 'hidden',
+              }}
+            >
+              Percentuale invalida
+            </FormHelperText>
           </FormControl>
           <FormControl fullWidth sx={{ m: 1, width: '25ch' }}>
             <InputLabel htmlFor="years">Durata</InputLabel>
             <OutlinedInput
+              error={!isYearsValid}
               id="years"
               endAdornment={
                 <InputAdornment position="end">anni</InputAdornment>
               }
-              label="Years"
+              label="Durata"
               type="number"
               value={years}
               onChange={(e) => handleChangeYears(e)}
@@ -84,6 +109,15 @@ const MortgageCalculator = ({
               }}
               inputProps={{ step: '5' }}
             />
+            <FormHelperText
+              id="component-error-text"
+              sx={{
+                color: 'red',
+                visibility: !isYearsValid ? 'visible' : 'hidden',
+              }}
+            >
+              Max 50 anni
+            </FormHelperText>
           </FormControl>
           <Button
             fullWidth

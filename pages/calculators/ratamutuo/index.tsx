@@ -15,20 +15,53 @@ const Ratamutuo = () => {
   const [rate, setRate] = useState(2.5)
   const [years, setYears] = useState(30)
 
-  const [outputAmount, setOutputAmount] = useState(null)
-  const [outputRate, setOutputRate] = useState(null)
-  const [outputYears, setOutputYears] = useState(null)
+  const [isAmountValid, setIsAmountValid] = useState(true)
+  const [isRateValid, setIsRateValid] = useState(true)
+  const [isYearsValid, setIsYearsValid] = useState(true)
 
-  const [outputInstallment, setOutputInstallment] = useState(null)
-  const [outputTotalCost, setOutputTotalCost] = useState(null)
-  const [outputTotalInterest, setOutputTotalInterest] = useState(null)
+  const [outputAmount, setOutputAmount] = useState(200000)
+  const [outputRate, setOutputRate] = useState(2.5)
+  const [outputYears, setOutputYears] = useState(30)
 
-  const handleChangeAmount = (e) => setAmount(e.target.value)
-  const handleChangeRate = (e) => setRate(e.target.value)
-  const handleChangeYears = (e) => setYears(e.target.value)
+  const [outputInstallment, setOutputInstallment] = useState('790.24')
+  const [outputTotalCost, setOutputTotalCost] = useState('284486.4')
+  const [outputTotalInterest, setOutputTotalInterest] = useState('84486.4')
+
+  const handleChangeAmount = (e) => {
+    const amountInput = e.target.value
+    if (amountInput < 0 || amountInput > 100000000) {
+      setIsAmountValid(false)
+    } else {
+      setIsAmountValid(true)
+    }
+    setAmount(amountInput)
+  }
+
+  const handleChangeRate = (e) => {
+    const rateInput = e.target.value
+    if (rateInput < 0 || rateInput > 100) {
+      setIsRateValid(false)
+    } else {
+      setIsRateValid(true)
+    }
+    setRate(rateInput)
+  }
+
+  const handleChangeYears = (e) => {
+    const yearsInput = e.target.value
+    if (yearsInput < 0 || yearsInput > 50) {
+      setIsYearsValid(false)
+    } else {
+      setIsYearsValid(true)
+    }
+    setYears(yearsInput)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    if (!isAmountValid || !isRateValid || !isYearsValid) {
+      return
+    }
     setOutputAmount(amount)
     setOutputRate(rate)
     setOutputYears(years)
@@ -57,6 +90,9 @@ const Ratamutuo = () => {
               handleChangeRate={handleChangeRate}
               handleChangeYears={handleChangeYears}
               handleSubmit={handleSubmit}
+              isAmountValid={isAmountValid}
+              isRateValid={isRateValid}
+              isYearsValid={isYearsValid}
             />
           </Grid>
           <Grid item xs={12} sm={6} md={6}>
