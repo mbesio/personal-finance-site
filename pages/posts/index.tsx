@@ -16,7 +16,7 @@ const AllPosts = (props) => {
 export default AllPosts
 
 export async function getStaticProps() {
-  //have up to six articles here
+  // To Do - sort the articles based on some specific order
   const slugs = getPostSlugs()
   const posts = slugs.map((post) =>
     getPostBySlug(post, ['title', 'slug', 'coverImage', 'excerpt'])
