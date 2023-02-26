@@ -5,7 +5,11 @@ import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import MortgageCalculator from '../../../components/calculators/mortgageCalc'
 import MortgageResults from '../../../components/calculators/calculatorResults'
-
+import {
+  monthlyInstallment,
+  totalCost,
+  totalInterest,
+} from '../../../lib/mortgageCalc'
 const Ratamutuo = () => {
   const [amount, setAmount] = useState(200000)
   const [rate, setRate] = useState(2.5)
@@ -14,6 +18,10 @@ const Ratamutuo = () => {
   const [outputAmount, setOutputAmount] = useState(null)
   const [outputRate, setOutputRate] = useState(null)
   const [outputYears, setOutputYears] = useState(null)
+
+  const [outputInstallment, setOutputInstallment] = useState(null)
+  const [outputTotalCost, setOutputTotalCost] = useState(null)
+  const [outputTotalInterest, setOutputTotalInterest] = useState(null)
 
   const handleChangeAmount = (e) => setAmount(e.target.value)
   const handleChangeRate = (e) => setRate(e.target.value)
@@ -24,6 +32,10 @@ const Ratamutuo = () => {
     setOutputAmount(amount)
     setOutputRate(rate)
     setOutputYears(years)
+    const installment = monthlyInstallment(amount, rate, years)
+    setOutputInstallment(installment)
+    setOutputTotalCost(totalCost(installment, years))
+    setOutputTotalInterest(totalInterest(installment, years, amount))
   }
 
   return (
@@ -35,7 +47,6 @@ const Ratamutuo = () => {
           pt: 3,
         }}
       >
-        {/* should have a grid here so they are either next to each other or on top of each other  */}
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6} md={6}>
             <MortgageCalculator
@@ -53,6 +64,9 @@ const Ratamutuo = () => {
               outputAmount={outputAmount}
               outputRate={outputRate}
               outputYears={outputYears}
+              outputInstallment={outputInstallment}
+              outputTotalCost={outputTotalCost}
+              outputTotalInterest={outputTotalInterest}
             />
           </Grid>
         </Grid>
