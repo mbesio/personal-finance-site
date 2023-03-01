@@ -22,6 +22,7 @@ const featuredArticles = [
   'l-indipendenza-finanziaria',
   'dollar-cost-averaging',
   'il-primo-step-verso-l-indipendenza-finanziaria',
+  'differenza-meno-abbienti-ceto-medio-ricchi',
 ]
 
 export async function getStaticProps() {
