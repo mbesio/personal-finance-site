@@ -18,14 +18,7 @@ const ResponsiveAppBar = () => {
     <AppBar color="default" position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Box
-            sx={{
-              display: {
-                xs: 'none',
-                sm: 'block',
-              },
-            }}
-          >
+          <Box>
             <Link
               href="/"
               style={{
@@ -46,6 +39,10 @@ const ResponsiveAppBar = () => {
                     flexGrow: 1,
                     fontWeight: 500,
                     textDecoration: 'none',
+                    display: {
+                      xs: 'none',
+                      sm: 'block',
+                    },
                   }}
                 >
                   FINANZA PERSONALE
