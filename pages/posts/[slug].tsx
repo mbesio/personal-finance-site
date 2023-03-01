@@ -70,7 +70,7 @@ export default function Post({ post, morePosts, preview }: Props) {
             fontFamily: { xs: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'] },
             lineHeight: '1.3em',
           }}
-          color="#1976d2"
+          // color="#1976d2"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </Box>
