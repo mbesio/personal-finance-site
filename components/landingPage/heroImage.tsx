@@ -6,7 +6,10 @@ const HeroImage = () => {
       sx={{
         mt: 1,
         backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(/assets/blog/images/hero.png)`,
-        height: '500px',
+        height: {
+          xs: '250px',
+          sm: '500px',
+        },
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
