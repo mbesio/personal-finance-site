@@ -15,7 +15,15 @@ const pages = [
 
 const ResponsiveAppBar = () => {
   return (
-    <AppBar color="default" position="static">
+    <AppBar
+      color="default"
+      sx={{
+        position: {
+          xs: 'sticky',
+          sm: 'static',
+        },
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box>
