@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import Home from '../../components/icons/home'
 import Budget from '../../components/icons/budget'
+import Percent from '../../components/icons/percent'
 
 const AllCalculators = () => {
   const calculators = [
@@ -21,6 +22,13 @@ const AllCalculators = () => {
         'Calcolatore per determinare il quanto stai spendendo e devo puoi essere più efficiente',
       path: '/calculators/budget',
       icon: <Budget />,
+    },
+    {
+      name: 'Calcola interesse composto',
+      description:
+        "Calcolatore per determinare quanto cresce il tuo patrimonio grazie all'interesse composto",
+      path: '/calculators/composto',
+      icon: <Percent />,
     },
   ]
 
