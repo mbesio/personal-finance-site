@@ -1,6 +1,6 @@
 ---
 title: 'L’incredibile forza dell’interesse composto'
-excerpt: 'L’interesse composto e’ il concetto fondamentale alla base della ricchezza nel lungo termine.'
+excerpt: 'L’interesse composto è il concetto fondamentale alla base della ricchezza nel lungo termine.'
 coverImage: '/assets/blog/images/compound-interest.jpg'
 date: '2020-03-16T05:35:07.322Z'
 author:
