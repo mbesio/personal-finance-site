@@ -4,7 +4,7 @@ import AppBar from '../../../components/appBar'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import MortgageCalculator from '../../../components/calculators/mortgageCalc'
-import MortgageResults from '../../../components/calculators/calculatorResults'
+import MortgageResults from '../../../components/calculators/mortgageResults'
 import {
   monthlyInstallment,
   totalCost,

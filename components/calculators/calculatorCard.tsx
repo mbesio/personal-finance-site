@@ -16,7 +16,11 @@ const CalculatorCard = ({ name, description, path, children }) => {
       >
         <CardActionArea sx={{ flexGrow: 1, display: 'flex' }}>
           {children}
-          <CardContent>
+          <CardContent
+            sx={{
+              width: '75%',
+            }}
+          >
             <Typography
               gutterBottom
               variant="h5"
