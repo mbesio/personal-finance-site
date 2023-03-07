@@ -4,8 +4,7 @@ import AppBar from '../../../components/appBar'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import CompoundCalculator from '../../../components/calculators/compoundCalc'
-import MortgageCalculator from '../../../components/calculators/mortgageCalc'
-import MortgageResults from '../../../components/calculators/mortgageResults'
+import CompoundResults from '../../../components/calculators/compoundResults'
 import {
   futureValueCalc,
   principalInvestedCalc,
@@ -16,7 +15,7 @@ const Compound = () => {
   const [rate, setRate] = useState(5)
   const [years, setYears] = useState(30)
   const [compoundFrequency, setCompoundFrequency] = useState('Mensile')
-  const [monthlyContribution, setMonthlyContribution] = useState(50)
+  const [monthlyContribution, setMonthlyContribution] = useState(100)
 
   const [isInitialDepositValid, setIsInitialDepositValid] = useState(true)
   const [isRateValid, setIsRateValid] = useState(true)
@@ -28,8 +27,9 @@ const Compound = () => {
   const [outputRate, setOutputRate] = useState(5)
   const [outputYears, setOutputYears] = useState(30)
   const [outputCompoundFrequency, setOutputCompoundFrequency] =
-    useState('Monthly')
-  const [outputMonthlyContribution, setOutputMonthlyContribution] = useState(50)
+    useState('Mensile')
+  const [outputMonthlyContribution, setOutputMonthlyContribution] =
+    useState(100)
 
   const [outputFutureValue, setOutputFutureValue] = useState('83672.64')
   const [outputInterestEarned, setOutputInterestEarned] = useState('47572.64')
@@ -37,7 +37,7 @@ const Compound = () => {
     useState('36100.00')
 
   const handleChangeInitialDeposit = (e) => {
-    const initialDepositInput = e.target.value
+    const initialDepositInput = parseFloat(e.target.value)
     if (initialDepositInput < 0 || initialDepositInput > 10000000) {
       setIsInitialDepositValid(false)
     } else {
@@ -47,7 +47,7 @@ const Compound = () => {
   }
 
   const handleChangeRate = (e) => {
-    const rateInput = e.target.value
+    const rateInput = parseFloat(e.target.value)
     if (rateInput < 0 || rateInput > 100) {
       setIsRateValid(false)
     } else {
@@ -57,7 +57,7 @@ const Compound = () => {
   }
 
   const handleChangeYears = (e) => {
-    const yearsInput = e.target.value
+    const yearsInput = parseInt(e.target.value)
     if (yearsInput < 0 || yearsInput > 50) {
       setIsYearsValid(false)
     } else {
@@ -73,7 +73,7 @@ const Compound = () => {
   }
 
   const handleChangeMonthlyContribution = (e) => {
-    const monthlyContributionInput = e.target.value
+    const monthlyContributionInput = parseFloat(e.target.value)
     if (monthlyContributionInput < 0 || monthlyContributionInput > 1000000) {
       setIsMonthlyContributionValid(false)
     } else {
@@ -151,7 +151,7 @@ const Compound = () => {
             />
           </Grid>
           <Grid item xs={12} sm={6} md={6}>
-            {/* <CompoundResults
+            <CompoundResults
               outputInitialDeposit={outputInitialDeposit}
               outputRate={outputRate}
               outputYears={outputYears}
@@ -160,7 +160,7 @@ const Compound = () => {
               outputFutureValue={outputFutureValue}
               outputInterestEarned={outputInterestEarned}
               outputPrincipalInvested={outputPrincipalInvested}
-            /> */}
+            />
           </Grid>
         </Grid>
       </Container>

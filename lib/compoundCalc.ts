@@ -16,13 +16,15 @@ const futureValue = (
 
   const firstAddendum =
     initialDeposit *
-    (1 + rate / compoundFrequencyFactor) ** (years * compoundFrequency)
+    (1 + rate / 100 / compoundFrequencyFactor) **
+      (years * compoundFrequencyFactor)
+
   const secondAddendum =
-    (monthlyContribution *
-      ((1 + rate / compoundFrequencyFactor) **
+    (((monthlyContribution * 12) / compoundFrequencyFactor) *
+      ((1 + rate / 100 / compoundFrequencyFactor) **
         (compoundFrequencyFactor * years) -
         1)) /
-    (rate / compoundFrequencyFactor)
+    (rate / 100 / compoundFrequencyFactor)
   return firstAddendum + secondAddendum
 }
 
@@ -63,7 +65,11 @@ export const principalInvestedCalc = (
   initialDeposit,
   years,
   monthlyContribution
-) => principalInvested(initialDeposit, years, monthlyContribution).toFixed(2)
+) => {
+  return principalInvested(initialDeposit, years, monthlyContribution).toFixed(
+    2
+  )
+}
 
 export const interestEarnedCalc = (
   initialDeposit,
