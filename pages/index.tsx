@@ -23,6 +23,7 @@ const featuredArticles = [
   'dollar-cost-averaging',
   'il-primo-step-verso-l-indipendenza-finanziaria',
   'differenza-meno-abbienti-ceto-medio-ricchi',
+  'l-interesse-composto',
 ]
 
 export async function getStaticProps() {
