@@ -3,38 +3,47 @@ import Box from '@mui/material/Box'
 import AppBar from '../../../components/appBar'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
+import CompoundCalculator from '../../../components/calculators/compoundCalc'
 import MortgageCalculator from '../../../components/calculators/mortgageCalc'
-import MortgageResults from '../../../components/calculators/calculatorResults'
+import MortgageResults from '../../../components/calculators/mortgageResults'
 import {
-  monthlyInstallment,
-  totalCost,
-  totalInterest,
-} from '../../../lib/mortgageCalc'
+  futureValueCalc,
+  principalInvestedCalc,
+  interestEarnedCalc,
+} from '../../../lib/compoundCalc'
 const Compound = () => {
-  const [amount, setAmount] = useState(200000)
-  const [rate, setRate] = useState(2.5)
+  const [initialDeposit, setInitialDeposit] = useState(100)
+  const [rate, setRate] = useState(5)
   const [years, setYears] = useState(30)
+  const [compoundFrequency, setCompoundFrequency] = useState('Mensile')
+  const [monthlyContribution, setMonthlyContribution] = useState(50)
 
-  const [isAmountValid, setIsAmountValid] = useState(true)
+  const [isInitialDepositValid, setIsInitialDepositValid] = useState(true)
   const [isRateValid, setIsRateValid] = useState(true)
   const [isYearsValid, setIsYearsValid] = useState(true)
+  const [isMonthlyContributionValid, setIsMonthlyContributionValid] =
+    useState(true)
 
-  const [outputAmount, setOutputAmount] = useState(200000)
-  const [outputRate, setOutputRate] = useState(2.5)
+  const [outputInitialDeposit, setOutputInitialDeposit] = useState(100)
+  const [outputRate, setOutputRate] = useState(5)
   const [outputYears, setOutputYears] = useState(30)
+  const [outputCompoundFrequency, setOutputCompoundFrequency] =
+    useState('Monthly')
+  const [outputMonthlyContribution, setOutputMonthlyContribution] = useState(50)
 
-  const [outputInstallment, setOutputInstallment] = useState('790.24')
-  const [outputTotalCost, setOutputTotalCost] = useState('284486.4')
-  const [outputTotalInterest, setOutputTotalInterest] = useState('84486.4')
+  const [outputFutureValue, setOutputFutureValue] = useState('83672.64')
+  const [outputInterestEarned, setOutputInterestEarned] = useState('47572.64')
+  const [outputPrincipalInvested, setOutputPrincipalInvested] =
+    useState('36100.00')
 
-  const handleChangeAmount = (e) => {
-    const amountInput = e.target.value
-    if (amountInput < 0 || amountInput > 100000000) {
-      setIsAmountValid(false)
+  const handleChangeInitialDeposit = (e) => {
+    const initialDepositInput = e.target.value
+    if (initialDepositInput < 0 || initialDepositInput > 10000000) {
+      setIsInitialDepositValid(false)
     } else {
-      setIsAmountValid(true)
+      setIsInitialDepositValid(true)
     }
-    setAmount(amountInput)
+    setInitialDeposit(initialDepositInput)
   }
 
   const handleChangeRate = (e) => {
@@ -57,18 +66,59 @@ const Compound = () => {
     setYears(yearsInput)
   }
 
+  const handleChangeCompoundFrequency = (e) => {
+    const compoundFrequencyInput = e.target.value
+    // no validation needed - only three inputs from a dropdown
+    setCompoundFrequency(compoundFrequencyInput)
+  }
+
+  const handleChangeMonthlyContribution = (e) => {
+    const monthlyContributionInput = e.target.value
+    if (monthlyContributionInput < 0 || monthlyContributionInput > 1000000) {
+      setIsMonthlyContributionValid(false)
+    } else {
+      setIsMonthlyContributionValid(true)
+    }
+    setMonthlyContribution(monthlyContributionInput)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (!isAmountValid || !isRateValid || !isYearsValid) {
+    if (
+      !isInitialDepositValid ||
+      !isRateValid ||
+      !isYearsValid ||
+      !isMonthlyContributionValid
+    ) {
       return
     }
-    setOutputAmount(amount)
+    setOutputInitialDeposit(initialDeposit)
     setOutputRate(rate)
     setOutputYears(years)
-    const installment = monthlyInstallment(amount, rate, years)
-    setOutputInstallment(installment)
-    setOutputTotalCost(totalCost(installment, years))
-    setOutputTotalInterest(totalInterest(installment, years, amount))
+    setOutputCompoundFrequency(compoundFrequency)
+    setOutputMonthlyContribution(monthlyContribution)
+    const futureValue = futureValueCalc(
+      initialDeposit,
+      rate,
+      years,
+      compoundFrequency,
+      monthlyContribution
+    )
+    const principalInvested = principalInvestedCalc(
+      initialDeposit,
+      years,
+      monthlyContribution
+    )
+    const interestEarned = interestEarnedCalc(
+      initialDeposit,
+      rate,
+      years,
+      compoundFrequency,
+      monthlyContribution
+    )
+    setOutputFutureValue(futureValue)
+    setOutputInterestEarned(interestEarned)
+    setOutputPrincipalInvested(principalInvested)
   }
 
   return (
@@ -82,28 +132,35 @@ const Compound = () => {
       >
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6} md={6}>
-            <MortgageCalculator
-              amount={amount}
+            <CompoundCalculator
+              initialDeposit={initialDeposit}
               rate={rate}
               years={years}
-              handleChangeAmount={handleChangeAmount}
+              compoundFrequency={compoundFrequency}
+              monthlyContribution={monthlyContribution}
+              handleChangeInitialDeposit={handleChangeInitialDeposit}
               handleChangeRate={handleChangeRate}
               handleChangeYears={handleChangeYears}
+              handleChangeCompoundFrequency={handleChangeCompoundFrequency}
+              handleChangeMonthlyContribution={handleChangeMonthlyContribution}
               handleSubmit={handleSubmit}
-              isAmountValid={isAmountValid}
+              isInitialDepositValid={isInitialDepositValid}
               isRateValid={isRateValid}
               isYearsValid={isYearsValid}
+              isMonthlyContributionValid={isMonthlyContributionValid}
             />
           </Grid>
           <Grid item xs={12} sm={6} md={6}>
-            <MortgageResults
-              outputAmount={outputAmount}
+            {/* <CompoundResults
+              outputInitialDeposit={outputInitialDeposit}
               outputRate={outputRate}
               outputYears={outputYears}
-              outputInstallment={outputInstallment}
-              outputTotalCost={outputTotalCost}
-              outputTotalInterest={outputTotalInterest}
-            />
+              outputCompoundFrequency={outputCompoundFrequency}
+              outputMonthlyContribution={outputMonthlyContribution}
+              outputFutureValue={outputFutureValue}
+              outputInterestEarned={outputInterestEarned}
+              outputPrincipalInvested={outputPrincipalInvested}
+            /> */}
           </Grid>
         </Grid>
       </Container>

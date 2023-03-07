@@ -7,18 +7,44 @@ import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import InputLabel from '@mui/material/InputLabel'
 import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import MenuItem from '@mui/material/MenuItem'
 
-const MortgageCalculator = ({
-  amount,
+const frequenzeInteresseComposto = [
+  {
+    value: 'Mensile',
+    label: 'Mensile',
+  },
+  {
+    value: 'Trimestrale',
+    label: 'Trimestrale',
+  },
+  {
+    value: 'Semestrale',
+    label: 'Semestrale',
+  },
+  {
+    value: 'Annuale',
+    label: 'Annuale',
+  },
+]
+
+const CompoundCalculator = ({
+  initialDeposit,
   rate,
   years,
-  handleChangeAmount,
+  compoundFrequency,
+  monthlyContribution,
+  handleChangeInitialDeposit,
   handleChangeRate,
   handleChangeYears,
+  handleChangeCompoundFrequency,
+  handleChangeMonthlyContribution,
   handleSubmit,
-  isAmountValid,
+  isInitialDepositValid,
   isRateValid,
   isYearsValid,
+  isMonthlyContributionValid,
 }) => {
   return (
     <Box>
@@ -29,7 +55,7 @@ const MortgageCalculator = ({
         color="primary.dark"
         align="center"
       >
-        Calcola la rata del tuo mutuo
+        Calcola la crescita del tuo capitale
       </Typography>
       <form>
         <Box
@@ -40,17 +66,17 @@ const MortgageCalculator = ({
           }}
         >
           <FormControl fullWidth sx={{ m: 1, width: '25ch' }}>
-            <InputLabel htmlFor="amount">Amount</InputLabel>
+            <InputLabel htmlFor="amount">Captiale iniziale</InputLabel>
             <OutlinedInput
-              error={!isAmountValid}
+              error={!isInitialDepositValid}
               id="amount"
               startAdornment={
                 <InputAdornment position="start">€</InputAdornment>
               }
-              label="Amount"
+              label="Captiale iniziale"
               type="number"
-              value={amount}
-              onChange={(e) => handleChangeAmount(e)}
+              value={initialDeposit}
+              onChange={(e) => handleChangeInitialDeposit(e)}
               onKeyPress={(e) => {
                 e.key === 'Enter' && e.preventDefault()
               }}
@@ -60,10 +86,10 @@ const MortgageCalculator = ({
               id="component-error-text"
               sx={{
                 color: 'red',
-                visibility: !isAmountValid ? 'visible' : 'hidden',
+                visibility: !isInitialDepositValid ? 'visible' : 'hidden',
               }}
             >
-              Max € 100,000,000
+              Max € 10,000,000
             </FormHelperText>
           </FormControl>
           <FormControl fullWidth sx={{ m: 1, width: '25ch' }}>
@@ -119,6 +145,57 @@ const MortgageCalculator = ({
               Max 50 anni
             </FormHelperText>
           </FormControl>
+          <FormControl fullWidth sx={{ m: 1, width: '25ch' }}>
+            <TextField
+              id="interesse-composto"
+              select
+              label="Frequenza interesse composto"
+              defaultValue="Mensile"
+              onChange={(e) => handleChangeCompoundFrequency(e)}
+            >
+              {frequenzeInteresseComposto.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+            <FormHelperText
+              id="component-error-text"
+              sx={{
+                color: 'red',
+                visibility: 'hidden',
+              }}
+            >
+              Placeholder
+            </FormHelperText>
+          </FormControl>
+          <FormControl fullWidth sx={{ m: 1, width: '25ch' }}>
+            <InputLabel htmlFor="amount">Contributo mensile</InputLabel>
+            <OutlinedInput
+              error={!isMonthlyContributionValid}
+              id="contributo-mensile"
+              startAdornment={
+                <InputAdornment position="start">€</InputAdornment>
+              }
+              label="Contributo mensile"
+              type="number"
+              value={monthlyContribution}
+              onChange={(e) => handleChangeMonthlyContribution(e)}
+              onKeyPress={(e) => {
+                e.key === 'Enter' && e.preventDefault()
+              }}
+              inputProps={{ step: '100', lang: 'en-US' }}
+            />
+            <FormHelperText
+              id="component-error-text"
+              sx={{
+                color: 'red',
+                visibility: !isMonthlyContributionValid ? 'visible' : 'hidden',
+              }}
+            >
+              Max € 1,000,000
+            </FormHelperText>
+          </FormControl>
           <Button
             fullWidth
             sx={{ m: 1, width: '25ch' }}
@@ -126,7 +203,7 @@ const MortgageCalculator = ({
             size="large"
             onClick={(e) => handleSubmit(e)}
           >
-            Calcola Rata
+            Calcola
           </Button>
         </Box>
       </form>
@@ -134,4 +211,4 @@ const MortgageCalculator = ({
   )
 }
 
-export default MortgageCalculator
+export default CompoundCalculator
