@@ -6,6 +6,7 @@ import html from 'remark-html'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import AppBar from '../../components/appBar'
+import SocialShare from '../../components/icons/socialShare'
 
 type PostType = {
   slug: string
@@ -65,6 +66,9 @@ export default function Post({ post, morePosts, preview }: Props) {
             fontFamily: { xs: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'] },
           }}
         />
+        <Box sx={{ mt: 1 }}>
+          <SocialShare slug={post.slug} />
+        </Box>
         <Box
           sx={{
             fontFamily: { xs: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'] },
