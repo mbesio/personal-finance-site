@@ -77,6 +77,9 @@ export default function Post({ post, morePosts, preview }: Props) {
           // color="#1976d2"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+        <Box sx={{ mt: 1 }}>
+          <SocialShare slug={post.slug} />
+        </Box>
       </Box>
     </>
   )

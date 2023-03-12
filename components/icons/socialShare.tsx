@@ -11,21 +11,27 @@ import {
 const SocialShare = ({ slug }) => {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-      <FacebookShareButton
-        url={`https://www.lafinanzapersonale.it/posts/${slug}/`}
-      >
-        <FacebookIcon size={32} round />
-      </FacebookShareButton>
-      <LinkedinShareButton
-        url={`https://www.lafinanzapersonale.it/posts/${slug}/`}
-      >
-        <LinkedinIcon size={32} round />
-      </LinkedinShareButton>
-      <TwitterShareButton
-        url={`https://www.lafinanzapersonale.it/posts/${slug}/`}
-      >
-        <TwitterIcon size={32} round />
-      </TwitterShareButton>
+      <Box sx={{ mx: 1 }}>
+        <FacebookShareButton
+          url={`https://www.lafinanzapersonale.it/posts/${slug}/`}
+        >
+          <FacebookIcon size={32} round />
+        </FacebookShareButton>
+      </Box>
+      <Box sx={{ mx: 1 }}>
+        <LinkedinShareButton
+          url={`https://www.lafinanzapersonale.it/posts/${slug}/`}
+        >
+          <LinkedinIcon size={32} round />
+        </LinkedinShareButton>
+      </Box>
+      <Box sx={{ mx: 1 }}>
+        <TwitterShareButton
+          url={`https://www.lafinanzapersonale.it/posts/${slug}/`}
+        >
+          <TwitterIcon size={32} round />
+        </TwitterShareButton>
+      </Box>
     </Box>
   )
 }
